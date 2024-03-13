@@ -21,7 +21,7 @@ public class CreateCourierTest {
     @Test
     @DisplayName("Создание курьера со всеми полями")
     public void testCreateCourier() {
-        courier = new Courier("ssssss", "1234", "Jackie");
+        courier = new Courier("ssssss", "1111", "sssss");
         Response response = new Page().createCourier(courier);
         statusCode = response.getStatusCode();
         assertEquals(201, statusCode);
@@ -32,7 +32,7 @@ public class CreateCourierTest {
     @Test
     @DisplayName("Создание курьера с занятым логином")
     public void testCreateDoubleCourier() {
-        courier = new Courier("ssssss", "1234", "Jackie");
+        courier = new Courier("sairis", "1234", "Black");
         Response response = new Page().createCourier(courier);
         Response responseSecond = new Page().createCourier(courier);
         statusCode = response.getStatusCode();
@@ -43,11 +43,10 @@ public class CreateCourierTest {
         assertTrue("Ожидаемое сообщение об ошибке не найдено", actualMessage.contains("Этот логин уже используется"));
     }
 
-
     @Test
     @DisplayName("Создание курьера без логина")
     public void testCreateCourierWithoutLogin() {
-        courier = new Courier("", "1234", "Jackie");
+        courier = new Courier("", "1111", "sssss");
         Response response = new Page().createCourier(courier);
         statusCode = response.getStatusCode();
         assertEquals(400, statusCode);
@@ -60,7 +59,7 @@ public class CreateCourierTest {
     @Test
     @DisplayName("Создание курьера без пароля")
     public void testCreateCourierWithoutPassword() {
-        courier = new Courier("ssssss", "", "Jackie");
+        courier = new Courier("ssssss", "", "sssss");
         Response response = new Page().createCourier(courier);
         statusCode = response.getStatusCode();
         assertEquals(400, statusCode);
@@ -73,7 +72,7 @@ public class CreateCourierTest {
     @Test
     @DisplayName("Создание курьера без имени")
     public void testCreateCourierWithoutFirstName() {
-        courier = new Courier("ssssss", "1234", "");
+        courier = new Courier("ssssss", "1111", "");
         Response response = new Page().createCourier(courier);
         statusCode = response.getStatusCode();
         assertEquals(201, statusCode);

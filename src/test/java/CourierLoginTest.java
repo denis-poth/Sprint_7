@@ -15,7 +15,7 @@ public class CourierLoginTest {
     @Before
     public void setUp() {
         RestAssured.baseURI = Page.URL;
-        courier = new Courier("ssssss", "1234", "Jackie");
+        courier = new Courier("ssssss", "1111", "black");
         Response response = new Page().createCourier(courier);
         statusCode = response.getStatusCode();
     }
